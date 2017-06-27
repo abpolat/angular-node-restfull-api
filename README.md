@@ -6,7 +6,7 @@
     cd angular-node-restfull-api
     
     npm install
-    npm run build
+    npm start
 
 ## Open
     

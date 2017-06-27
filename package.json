@@ -5,9 +5,9 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "serve": "ng serve",
     "e2e": "protractor",
-    "build": "ng build && babel-node server.js"
+    "start": "ng build && babel-node server.js"
   },
   "private": true,
   "dependencies": {
