@@ -1,0 +1,29 @@
+<h2 class="page-header">Products</h2>
+<div class="alert alert-info" *ngIf="active == false">
+  There are no products yet. Click <a routerLink="/product/create"><strong>here</strong></a> to add one.
+</div>
+<table class="table table-striped" *ngIf="active">
+  <thead>
+  <tr>
+    <th class="col-sm-1">#</th>
+    <th class="col-sm-4">Name</th>
+    <th class="col-sm-4">Price</th>
+    <th class="col-sm-3"><input #searchBox type="text" placeholder="Type at least 2 character to search" class="form-control" (keyup)="search(searchBox.value)"> </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products; let i = index">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ product.name }}</td>
+    <td>{{product.price}} {{product.currency}}</td>
+    <td class="text-right">
+      <a (click)="gotoDetail(product)" class="btn btn-success">View</a>
+      <a [routerLink]="['/product/edit', product._id]" class="btn btn-default">Edit</a>
+      <a (click)="deleteProduct(product); $event.stopPropagation();"class="btn btn-danger">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="alert alert-warning" *ngIf="noResult">
+  There are no results.
+</div>
