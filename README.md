@@ -13,3 +13,8 @@ A sample project written by me to try CRUD operations with Angular 2
 ## Open
     
     http://localhost:3000
+
+## Author
+
+    Burak Polat
+    http://bytok.net/cv
