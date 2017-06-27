@@ -15,10 +15,13 @@ router.get('/products', (req, res) => {
 
   Product.find({}, (err, products) => {
     if (err) {
-      return console.error(err);
-    } else {
-      return res.status(HTTP_STATUS.OK).json(products);
+      console.log(err);
+      return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+        error: err
+      });
     }
+
+    return res.status(HTTP_STATUS.OK).json(products);
   });
 
 });
@@ -41,23 +44,23 @@ router.post('/products', (req, res) => {
       return res.status(HTTP_STATUS.UNPROCESSABLE_ENTITY).json({
         error: err
       });
-    } else {
-      //Product has been created
-      Product.findById(product._id, (err, product) => {
-        if (err) {
-          console.log('GET Error: There was a problem retrieving: ', err);
-          return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
-            error: err
-          });
-        } else {
-          console.log('GET Retrieving ID: ', product._id);
-          return res.status(HTTP_STATUS.CREATED).json({
-            message: 'New product was created successfully.',
-            _id: product._id
-          });
-        }
-      });
     }
+
+    //Product has been created
+    Product.findById(product._id, (err, product) => {
+      if (err) {
+        console.log('GET Error: There was a problem retrieving: ', err);
+        return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+          error: err
+        });
+      }
+
+      console.log('GET Retrieving ID: ', product._id);
+      return res.status(HTTP_STATUS.CREATED).json({
+        message: 'New product was created successfully.',
+        _id: product._id
+      });
+    });
   });
 });
 
