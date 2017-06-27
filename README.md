@@ -1,4 +1,4 @@
-# Restful Api
+# Restful API
 > Angular 2 + Node.js + MongoDB + Bootstrap
 
 ## Setup
