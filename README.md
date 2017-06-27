@@ -16,5 +16,5 @@ A sample project written by me to try CRUD operations with Angular 2
 
 ## Author
 
-    Burak Polat
+Burak Polat
 [http://bytok.net/cv](bytok.net/cv)
